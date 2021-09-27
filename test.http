@@ -37,3 +37,6 @@ Content-Type: application/json
 {
   "title": "New post!"
   }
+
+###
+GET http://localhost:3000
