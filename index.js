@@ -21,6 +21,8 @@ const app = express() // lege es in der const ab
 
 const port = 3000 // erstell mir einen Port
 
+app.use(express.json()) // muss an erster Stelle stehen!!!
+
 app.get('/api/cards', (request, response) => {
   // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
   response.send('Hello Wööörld!')
