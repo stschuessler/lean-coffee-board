@@ -47,33 +47,15 @@ GET http://localhost:3000/api/cards
 
 ###
 POST http://localhost:3000/api/cards
-Content-Type: application/json
 
-{
-    "text": "This was a POST request"
-}
 
 ###
 PUT http://localhost:3000/api/cards
-Content-Type: application/json
-
-{
-    "text": "This was a PUT request"
-}
 
 
 ###
 PATCH http://localhost:3000/api/cards
-Content-Type: application/json
 
-{
-    "text": "This was a PATCH request"
-}
 
 ###
 DELETE  http://localhost:3000/api/cards
-Content-Type: application/json
-
-{
-    "text": "This was a DELETE  request"
-}

@@ -14,7 +14,7 @@
 
 // // to find in: https://nodejs.dev/learn/build-an-http-server
 
-const { request, response } = require('express')
+// const { request, response } = require('express')  // VSCODE packt die Zeile autmatisch rein. Wird aber nicht benötigt
 const express = require('express') // holen uns request
 
 const app = express() // lege es in der const ab
@@ -23,30 +23,25 @@ const port = 3000 // erstell mir einen Port
 
 app.get('/api/cards', (request, response) => {
   // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
-  response.set('Content-type', 'text/html; charset=utf-8')
-  response.send('Hello Wöörld!')
+  response.send('Hello Wööörld!')
 })
 
 // Aufgabe:
 // Express Request handler schreiben für POST, PUT, PATCH, DELETE (Route: /api/cards)
 
 app.post('/api/cards', (request, response) => {
-  response.set('Content-type', 'text/html; charset=utf-8')
   response.send('This was a POST request')
 })
 
 app.put('/api/cards', (request, response) => {
-  response.set('Content-type', 'text/html; charset=utf-8')
   response.send('This was a PUT request')
 })
 
 app.patch('/api/cards', (request, response) => {
-  response.set('Content-type', 'text/html; charset=utf-8')
   response.send('This was a PATCH request')
 })
 
 app.delete('/api/cards', (request, response) => {
-  response.set('Content-type', 'text/html; charset=utf-8')
   response.send('This was a DELETE request')
 })
 
