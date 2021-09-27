@@ -20,8 +20,16 @@ const app = express() // lege es in der const ab
 
 const port = 3000 // erstell mir einen Port
 
+app.get('/', (request, response) => {
+  // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
+  response.set('Content-type', 'text/html; charset=utf-8')
+  response.send('Hello World!')
+})
+
 app.listen(port, () => {
   console.log(`Server listenin at http://localhost:${port}`)
 })
 
 // am Ende soll meine App auf den port hören
+
+// zu finden https://expressjs.com/en/starter/hello-world.html
