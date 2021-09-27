@@ -30,6 +30,7 @@ app.get('/api/cards', (request, response) => {
 // Express Request handler schreiben für POST, PUT, PATCH, DELETE (Route: /api/cards)
 
 app.post('/api/cards', (request, response) => {
+  console.log(request.body)
   response.send('This was a POST request')
 })
 
