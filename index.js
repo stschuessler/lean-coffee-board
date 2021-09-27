@@ -23,7 +23,7 @@ const port = 3000 // erstell mir einen Port
 app.get('/', (request, response) => {
   // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
   response.set('Content-type', 'text/html; charset=utf-8')
-  response.send('Hello World!')
+  response.send('Hello Wöörld!')
 })
 
 app.listen(port, () => {
