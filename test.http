@@ -63,7 +63,7 @@ Content-Type: application/json
 
 
 ###
-PATCH http://localhost:3000/api/cards
+PATCH http://localhost:3000/api/cards/1234
 Content-Type: application/json
 
 {

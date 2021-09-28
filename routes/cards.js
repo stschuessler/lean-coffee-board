@@ -8,6 +8,11 @@ router.get('/', (request, response) => {
   response.send('Hello Wööörld!')
 })
 
+router.post('/', (request, response) => {
+  console.log(request.body) // gibt  im Terminal undefined aus, wenn express.json nicht gesetzt
+  response.send(request.body.text)
+})
+
 router.put('/:id', (request, response) => {
   console.log(request.body)
   response.set('Content-type', 'text/html; charset=utf-8')
@@ -17,6 +22,13 @@ router.put('/:id', (request, response) => {
   // Das selbe in destructering:
   // const {text} = request.body
   // response.send(text)
+})
+
+router.patch('/:id', (request, response) => {
+  console.log(request.body)
+  response.set('Content-type', 'text/html; charset=utf-8')
+  const requestObject = request.body
+  response.send(requestObject.text)
 })
 
 module.exports = router

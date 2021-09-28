@@ -7,16 +7,6 @@ app.use(express.json())
 
 app.use('/api/cards', require('./routes/cards'))
 
-app.post('/api/cards', (request, response) => {
-  console.log(request.body) // gibt  im Terminal undefined aus, wenn express.json nicht gesetzt
-  response.send(request.body.text)
-})
-
-app.patch('/api/cards', (request, response) => {
-  response.set('Content-type', 'text/html; charset=utf-8')
-  response.send('This was a PATCH request')
-})
-
 app.delete('/api/cards', (request, response) => {
   response.set('Content-type', 'text/html; charset=utf-8')
   response.send('This was a DELETE request')
