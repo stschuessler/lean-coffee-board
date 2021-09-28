@@ -30,7 +30,11 @@ router.get('/:id', (request, response) => {
   // const id ) params.id // Hier greife ich auf die id zu  '1234abc'
   const card = cards.find(card => card.id === id) // So suche ich mir meine
   //einzelne Karte raus
-  response.status(200).json(card)
+  if (card) {
+    response.status(200).json(card)
+  } else {
+    response.status(404).json('Could not find object')
+  }
 })
 
 router.post('/', (request, response) => {
