@@ -38,8 +38,14 @@ app.post('/api/cards', (request, response) => {
 })
 
 app.put('/api/cards', (request, response) => {
+  console.log(request.body)
   response.set('Content-type', 'text/html; charset=utf-8')
-  response.send('This was a PUT request')
+  const requestObject = request.body
+  response.send(requestObject.text)
+
+  // Das selbe in destructering:
+  // const {text} = request.body
+  // response.send(text)
 })
 
 app.patch('/api/cards', (request, response) => {
