@@ -33,7 +33,8 @@ router.get('/:id', (request, response) => {
   if (card) {
     response.status(200).json(card)
   } else {
-    response.status(404).json('Could not find object')
+    const error = { message: 'Could not find object' } // Defined as object
+    response.status(404).json(error)
   }
 })
 
