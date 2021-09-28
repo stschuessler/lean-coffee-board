@@ -46,34 +46,38 @@ GET http://localhost:3000
 GET http://localhost:3000/api/cards
 
 ###
+
+GET http://localhost:3000/api/cards/12
+
+###
+
 POST http://localhost:3000/api/cards 
 Content-Type: application/json
 
 {
-    "text": "What is a POST request???"
+    "text": "What do yo want to know?",
+    "author": "Jon Doe"  
 }
 
 ###
-PUT http://localhost:3000/api/cards
+PUT http://localhost:3000/api/cards/2
 Content-Type: application/json
 
 {
-    "text": "What is a PUT request?"
+    
+    "author": "Bob"
 }
 
 
 ###
-PATCH http://localhost:3000/api/cards
+PATCH http://localhost:3000/api/cards/1
 Content-Type: application/json
 
 {
-    "text": "This was a PATCH request"
+    "text": "This is a AWESOME patch text"
 }
 
 ###
-DELETE  http://localhost:3000/api/cards
-Content-Type: application/json
+DELETE  http://localhost:3000/api/cards/2
 
-{
-    "text": "This was a DELETE  request"
-}
+
