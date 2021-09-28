@@ -6,16 +6,31 @@ let cards = [
   {
     text: 'Hello World',
     author: 'Universe',
+    id: '1', // Wichtig ist das ganze als String anzugeben!!! Weil wir ja auch
+    //ein strict equal gesetzt haben. Bei MongoDB bekommen wir später
+    //auch strings als id
   },
   {
     text: 'What is the answer to everything?',
     author: '42',
+    id: '2',
   },
 ]
 
 router.get('/', (request, response) => {
   // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
   response.status(200).json(cards)
+})
+
+router.get('/:id', (request, response) => {
+  // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
+  const { id } = request.params //Wir stellen den request an unsere params.
+  //Params steht hier für unseren Parameter den wir in der Route gesetzt haben
+  // const params = request.params  // {id: '1234abs'}
+  // const id ) params.id // Hier greife ich auf die id zu  '1234abc'
+  const card = cards.find(card => card.id === id) // So suche ich mir meine
+  //einzelne Karte raus
+  response.status(200).json(card)
 })
 
 router.post('/', (request, response) => {
