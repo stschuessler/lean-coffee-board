@@ -69,11 +69,11 @@ Content-Type: application/json
 
 
 ###
-PATCH http://localhost:3000/api/cards/1234
+PATCH http://localhost:3000/api/cards/1
 Content-Type: application/json
 
 {
-    "text": "This was a PATCH request"
+    "text": "This is a AWESOME patch text"
 }
 
 ###

@@ -65,10 +65,33 @@ router.put('/:id', (request, response) => {
 })
 
 router.patch('/:id', (request, response) => {
-  console.log(request.body)
-  response.set('Content-type', 'text/html; charset=utf-8')
-  const requestObject = request.body
-  response.send(requestObject.text)
+  const { id } = request.params
+  const { text, author } = request.body
+
+  if (!text && !author) {
+    // wenn text UND author beide leer sind, dann schmeiß mir einen Error
+    const error = { message: 'Information missing' }
+    return response.status(400).json(error) // Und zwar mit der Info-message und Bad error
+  }
+
+  const card = cards.find(card => card.id === id) // hole mir die card mit der id
+  if (!card) {
+    // wenn card nicht vorhanden
+    const error = { message: 'Could not find object with that id.' }
+    return response.status(404).json(error)
+  }
+
+  const newCard = {
+    text: text ? text : card.text, // text da? dann zeige mir diesen an, wenn nicht, dann übernimmt den mitgelieferten text
+    author: author ? author : card.author, // author da? dann zeige mir diesen an, wenn nicht, dann übernimm den mitgelieferten author
+    id: card.id, // die id bleibt gleich
+  }
+
+  const index = cards.findIndex(card => card.id === id)
+
+  cards = [...cards.slice(0, index), newCard, ...cards.slice(index + 1)]
+
+  response.status(200).json(newCard)
 })
 
 router.delete('/:id', (request, response) => {
