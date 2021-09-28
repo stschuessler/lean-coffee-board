@@ -40,8 +40,17 @@ router.get('/:id', (request, response) => {
 })
 
 router.post('/', (request, response) => {
-  console.log(request.body) // gibt  im Terminal undefined aus, wenn express.json nicht gesetzt
-  response.send(request.body.text)
+  const { text, author } = request.body // { text: "What is node?", author: "Max M." }
+
+  if (text === '' || author === '') {
+    const error = { message: 'Information missing.' }
+    return response.status(400).json(error) //Bad request
+  }
+
+  const newCard = { text, author, id: nanoid() } // Shorcut für: { text: text, author: author, id: nanoid() }
+  cards = [...cards, newCard]
+  // cards.push(newCard)
+  response.status(200).json(newCard)
 })
 
 router.put('/:id', (request, response) => {
