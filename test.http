@@ -50,7 +50,7 @@ POST http://localhost:3000/api/cards
 Content-Type: application/json
 
 {
-    "text": "This was a POST request"
+    "text": "What is a POST request???"
 }
 
 ###
@@ -58,7 +58,7 @@ PUT http://localhost:3000/api/cards
 Content-Type: application/json
 
 {
-    "text": "This was a PUT request"
+    "text": "What is a PUT request?"
 }
 
 
