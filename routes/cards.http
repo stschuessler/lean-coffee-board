@@ -55,7 +55,9 @@ POST http://localhost:3000/api/cards
 Content-Type: application/json
 
 {
-    "text": "What is a POST request???"
+    "text": "What do yo want to know?",
+    "author": "Jon Doe"   // hier kein kann-Komma!!!!  
+    // und auch generell keine Kommentare im file!!!
 }
 
 ###
