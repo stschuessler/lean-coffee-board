@@ -8,4 +8,15 @@ router.get('/', (request, response) => {
   response.send('Hello Wööörld!')
 })
 
+router.put('/api/cards', (request, response) => {
+  console.log(request.body)
+  response.set('Content-type', 'text/html; charset=utf-8')
+  const requestObject = request.body
+  response.send(requestObject.text)
+
+  // Das selbe in destructering:
+  // const {text} = request.body
+  // response.send(text)
+})
+
 module.exports = router
