@@ -2,10 +2,20 @@ const express = require('express')
 
 const router = express.Router()
 
+let cards = [
+  {
+    text: 'Hello World',
+    author: 'Universe',
+  },
+  {
+    text: 'What is the answer to everything?',
+    author: '42',
+  },
+]
+
 router.get('/', (request, response) => {
   // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
-  response.set('Content-type', 'text/html; charset=utf-8')
-  response.send('Hello Wööörld!')
+  response.status(200).json(cards)
 })
 
 router.post('/', (request, response) => {
