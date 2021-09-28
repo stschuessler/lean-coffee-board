@@ -71,7 +71,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:3000/api/cards
+DELETE  http://localhost:3000/api/cards/1234
 Content-Type: application/json
 
 {

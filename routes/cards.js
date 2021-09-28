@@ -31,4 +31,9 @@ router.patch('/:id', (request, response) => {
   response.send(requestObject.text)
 })
 
+router.delete('/:id', (request, response) => {
+  response.set('Content-type', 'text/html; charset=utf-8')
+  response.send('This was a DELETE request')
+})
+
 module.exports = router
