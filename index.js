@@ -33,8 +33,8 @@ app.get('/api/cards', (request, response) => {
 // Express Request handler schreiben für POST, PUT, PATCH, DELETE (Route: /api/cards)
 
 app.post('/api/cards', (request, response) => {
-  console.log(request.body) // gibt  im Terminal undefined aus
-  response.send('This was a POST request')
+  console.log(request.body) // gibt  im Terminal undefined aus, wenn express.json nicht gesetzt
+  response.send(request.body.text)
 })
 
 app.put('/api/cards', (request, response) => {
