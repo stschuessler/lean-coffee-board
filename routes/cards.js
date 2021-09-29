@@ -106,16 +106,9 @@ router.patch('/:id', (request, response) => {
 
 router.delete('/:id', (request, response) => {
   const { id } = request.params
-  const card = cards.find(card => card.id === id) // ist id in einem der Objekte vorhanden?
-
-  if (card) {
-    // card ==> truthy
-    cards = cards.filter(card => card.id !== id) // filter alle Einträge heraus, die nicht der id entsprechen und wirft sie in das Array. Nur die mit der id wird nicht mit hinein genommen, also deleted
-    response.status(200).json(card)
-  } else {
-    const error = { message: 'Could not find object with that id.' }
-    response.status(404).json(error)
-  }
+  Card.findByIdAndDelete(id)
+    .then(data => response.status(200).json(data))
+    .catch(error => response.status(404).json(error))
 })
 
 module.exports = router
