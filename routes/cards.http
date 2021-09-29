@@ -47,7 +47,7 @@ GET http://localhost:3000/api/cards
 
 ###
 
-GET http://localhost:3000/api/cards/12
+GET http://localhost:3000/api/cards/61543c481a0a0b23a3590e7e
 
 ###
 

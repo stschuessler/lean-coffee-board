@@ -26,19 +26,10 @@ router.get('/', (request, response) => {
 })
 
 router.get('/:id', (request, response) => {
-  // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
   const { id } = request.params //Wir stellen den request an unsere params.
-  //Params steht hier für unseren Parameter den wir in der Route gesetzt haben
-  // const params = request.params  // {id: '1234abs'}
-  // const id ) params.id // Hier greife ich auf die id zu  '1234abc'
-  const card = cards.find(card => card.id === id) // So suche ich mir meine
-  //einzelne Karte raus
-  if (card) {
-    response.status(200).json(card)
-  } else {
-    const error = { message: 'Could not find object' } // Defined as object
-    response.status(404).json(error)
-  }
+  Card.findById(id)
+    .then(data => response.status(200).json(data))
+    .catch(error => response.status(404).json(error))
 })
 
 router.post('/', (request, response) => {
