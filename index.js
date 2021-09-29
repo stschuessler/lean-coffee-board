@@ -5,7 +5,7 @@ const app = express()
 
 const port = 3000
 
-connectDatabase('mongodb://localhost:27017/lean-coffee-board') // Funktionsaufruf mit der entsprechenden url
+connectDatabase('mongodb://localhost:27017/lean-coffe-board') // Funktionsaufruf mit der entsprechenden url
 // vgl https://mongoosejs.com/
 
 app.use(express.json())
