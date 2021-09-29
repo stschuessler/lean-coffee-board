@@ -1,4 +1,5 @@
 const express = require('express')
+const Card = require('../models/Card') // import Card
 const { nanoid } = require('nanoid')
 
 const router = express.Router()
@@ -19,8 +20,9 @@ let cards = [
 ]
 
 router.get('/', (request, response) => {
-  // '/' Definition unserer Route: wo soll der Aufruf durchgeführt sein,
-  response.status(200).json(cards)
+  Card.find()
+    .then(data => response.status(200).json(data))
+    .catch(error => response.status(404).json(error))
 })
 
 router.get('/:id', (request, response) => {
