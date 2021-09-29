@@ -57,7 +57,7 @@ router.put('/:id', (request, response) => {
   const { id } = request.params
   const { text, author } = request.body
 
-  if (!text && !author) {
+  if (!text || !author) {
     const error = { message: 'Information missing' }
     return response.status(400).json(error)
   }
@@ -69,8 +69,8 @@ router.put('/:id', (request, response) => {
   }
 
   const newCard = {
-    text: text,
-    author: author,
+    text: text, // der mit gelieferte Text  //text : card.text ist der alte Eintrag in unserem Array
+    author: author, // ich könnte auch nur den short-cut verwenden ==> author
     id: card.id,
   }
 
