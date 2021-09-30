@@ -60,11 +60,11 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/cards/2
+PUT http://localhost:3000/api/cards/61555b6205b81e952c62c935
 Content-Type: application/json
 
 {
-    
+    "text": "New text",
     "author": "Bob"
 }
 

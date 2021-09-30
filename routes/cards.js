@@ -59,23 +59,21 @@ router.put('/:id', (request, response) => {
     return response.status(400).json(error)
   }
 
-  const card = cards.find(card => card.id === id)
-  if (!card) {
-    const error = { message: 'Could not find object with that id.' }
-    return response.status(404).json(error)
-  }
+  Card.findByIdAndUpdate(id, { text, author }, { new: true }) // new: true --> damit Mongo uns die neue Card/Document als response wieder gibt
+    .then(data => response.status(200).json(data))
+    .catch(error => response.status(404).json(error))
 
-  const newCard = {
-    text: text, // der mit gelieferte Text  //text : card.text ist der alte Eintrag in unserem Array
-    author: author, // ich könnte auch nur den short-cut verwenden ==> author
-    id: card.id,
-  }
+  // const newCard = {
+  //   text: text, // der mit gelieferte Text  //text : card.text ist der alte Eintrag in unserem Array
+  //   author: author, // ich könnte auch nur den short-cut verwenden ==> author
+  //   id: card.id,
+  // }
 
-  const index = cards.findIndex(card => card.id === id)
+  // const index = cards.findIndex(card => card.id === id)
 
-  cards = [...cards.slice(0, index), newCard, ...cards.slice(index + 1)]
+  // cards = [...cards.slice(0, index), newCard, ...cards.slice(index + 1)]
 
-  response.status(200).json(newCard)
+  // response.status(200).json(newCard)
 })
 
 router.patch('/:id', (request, response) => {
