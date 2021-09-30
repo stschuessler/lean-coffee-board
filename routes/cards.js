@@ -33,17 +33,21 @@ router.get('/:id', (request, response) => {
 })
 
 router.post('/', (request, response) => {
-  const { text, author } = request.body // { text: "What is node?", author: "Max M." }
+  const { text, author } = request.body
 
+  // Validierung ruhig schon vom Backend ausgehend!!
   if (text === '' || author === '') {
     const error = { message: 'Information missing.' }
-    return response.status(400).json(error) //Bad request
+    return response.status(400).json(error)
   }
 
-  const newCard = { text, author, id: nanoid() } // Shorcut für: { text: text, author: author, id: nanoid() }
-  cards = [...cards, newCard]
-  // cards.push(newCard)
-  response.status(200).json(newCard)
+  const newCard = { text, author } // newCard muss nicht zwangsläufig erstellt werden, ist aber gängig
+
+  // Card.create(request.body)
+  // Card.create({ text, author }) ==> { text:text, author: author}   // entspricht sich
+  Card.create(newCard)
+    .then(data => response.status(201).json(data))
+    .catch(error => response.status(404).json(error))
 })
 
 router.put('/:id', (request, response) => {
