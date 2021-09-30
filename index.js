@@ -1,6 +1,7 @@
 const express = require('express')
 const { connect } = require('mongoose')
 const connectDatabase = require('./setupMongo') // wir importieren unsere Funktion
+const errorHandler = require('./errorHandler')
 const app = express()
 
 const port = 3000
