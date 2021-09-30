@@ -13,7 +13,7 @@ app.use(express.json())
 
 app.use('/api/cards', require('./routes/cards'))
 
-app.use(errorHandler())
+app.use(errorHandler)
 
 app.listen(port, () => {
   console.log(`Server listenin at http://localhost:${port}`)
