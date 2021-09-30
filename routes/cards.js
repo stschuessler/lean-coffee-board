@@ -27,11 +27,18 @@ router.get('/', (request, response, next) => {
     )
 })
 
-router.get('/:id', (request, response) => {
+router.get('/:id', (request, response, next) => {
   const { id } = request.params //Wir stellen den request an unsere params.
   Card.findById(id)
-    .then(data => response.status(200).json(data))
-    .catch(error => response.status(404).json(error))
+    .then(data => {
+      if (!data) {
+        throw new Error('This is my error!')
+      }
+      response.status(200).json(data)
+    })
+    .catch(error =>
+      next({ status: 404, message: error.message || 'Document not found' })
+    )
 })
 
 router.post('/', (request, response) => {
