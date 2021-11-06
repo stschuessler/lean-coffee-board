@@ -47,16 +47,14 @@ router.post('/', (request, response) => {
   // Validierung ruhig schon vom Backend ausgehend!!
   if (text === '' || author === '') {
     const error = { message: 'Information missing.' }
-    return response.status(400).json(error)
+    return next({ status: 400, message: error.message }) // bei return wird die next Funktion aufgerufen
   }
 
-  const newCard = { text, author } // newCard muss nicht zwangsläufig erstellt werden, ist aber gängig
+  const newCard = { text, author }
 
-  // Card.create(request.body)
-  // Card.create({ text, author }) ==> { text:text, author: author}   // entspricht sich
   Card.create(newCard)
     .then(data => response.status(201).json(data))
-    .catch(error => response.status(404).json(error))
+    .catch(next) // springt hoch zum Aufruf von next
 })
 
 router.put('/:id', (request, response) => {
@@ -65,26 +63,26 @@ router.put('/:id', (request, response) => {
 
   if (!text || !author) {
     const error = { message: 'Information missing' }
-    return response.status(400).json(error)
+    return next({ status: 400, message: error.message })
   }
 
   Card.findByIdAndUpdate(id, { text, author }, { new: true }) // new: true --> damit Mongo uns die neue Card/Document als response wieder gibt
     .then(data => response.status(200).json(data))
-    .catch(error => response.status(404).json(error))
+    .catch(next)
 })
 
-router.patch('/:id', (request, response) => {
+router.patch('/:id', (request, response, next) => {
   const { id } = request.params
   const { text, author } = request.body
 
   if (!text && !author) {
     const error = { message: 'Information missing' }
-    return response.status(400).json(error)
+    return next({ status: 400, message: error.message })
   }
 
   Card.findByIdAndUpdate(id, { text, author }, { new: true }) // new: true --> damit Mongo uns die neue Card/Document als response wieder gibt
     .then(data => response.status(200).json(data))
-    .catch(error => response.status(404).json(error))
+    .catch(next)
 })
 
 router.delete('/:id', (request, response, next) => {
